@@ -44,12 +44,19 @@ module ActiveAdmin
           li_element.add_class "current" if current?(item)
           link_path = url_for_menu_item(item)
 
+		  
+		  #julio adicionado t para trduzir os nomes das tabelas
+		  item_name = item.label
+		  if t item.name.index('translation missing:') == nil
+			item_name = t item_name
+		  end		  
+		  
           if item.children.any?
             li_element.add_class "has_nested"
-            text_node link_to(item.label, link_path)
+            text_node link_to(item_name, link_path)
             render_nested_menu(item)
           else
-            link_to item.label, link_path
+            link_to item_name, link_path
           end
         end
       end
