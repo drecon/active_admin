@@ -46,17 +46,17 @@ module ActiveAdmin
 
 		  
 		  #julio adicionado t para trduzir os nomes das tabelas
-		  item_name = item.label
-		  if t item.name.index('translation missing:') == nil
-			item_name = t item_name
+		  name = item.label
+		  if t name.index('translation missing:') == nil
+			name = t name
 		  end		  
 		  
           if item.children.any?
             li_element.add_class "has_nested"
-            text_node link_to(item_name, link_path)
+            text_node link_to(name, link_path)
             render_nested_menu(item)
           else
-            link_to item_name, link_path
+            link_to name, link_path
           end
         end
       end
